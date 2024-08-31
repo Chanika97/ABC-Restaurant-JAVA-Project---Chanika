@@ -154,7 +154,7 @@
       Add New Admin</button>
               
                     <table class="table table-bordered">
-                     <thead class>
+                     <thead>
                         <tr>
                           <th>Admin ID</th>
                           <th>First name</th>
@@ -179,27 +179,27 @@
                   <form id="adminForm">
     <!-- Name input -->
     <div class="form-outline mb-4">
-        <input type="text" id="first_name" name="firstName" class="form-control" />
+        <input type="text" id="first_name" name="firstName" class="form-control" required/>
         <label class="form-label" for="first_name">First Name</label>
     </div>
     <!-- Name input -->
     <div class="form-outline mb-4">
-        <input type="text" id="last_name" name="lastName" class="form-control" />
+        <input type="text" id="last_name" name="lastName" class="form-control" required/>
         <label class="form-label" for="last_name">Last Name</label>
     </div>
     <!-- Email input -->
     <div class="form-outline mb-4">
-        <input type="email" id="email" name="emailAddress" class="form-control" />
+        <input type="email" id="email" name="emailAddress" class="form-control" required/>
         <label class="form-label" for="email">Email address</label>
     </div>
     <!-- Date input -->
     <div class="form-outline mb-4">
-        <input type="date" id="date" name="joinedDate" class="form-control" />
+        <input type="date" id="date" name="joinedDate" class="form-control" required/>
         <label class="form-label" for="date">Joined Date</label>
     </div>
     <!-- Password input -->
     <div class="form-outline mb-4">
-        <input type="password" id="password2" name="defaultPassword" class="form-control" />
+        <input type="password" id="password2" name="defaultPassword" class="form-control" required/>
         <label class="form-label" for="password2">Default Password</label>
     </div>
     <!-- Submit button -->
@@ -260,7 +260,7 @@
           <div class="card">
             <div class="card-body">
               <div class="d-sm-flex justify-content-center justify-content-sm-between py-2">
-                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">2024 ABC Restaurant. All rights reserved.<br>
+                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block"></a>2024 ABC Restaurant. All rights reserved.<br>
                   1234 Main Street, City, Sri Lanka | Phone: (+94) 456-7890<br>
                   Email: info@abcrestaurant.com |</a>2024</span>
                 
@@ -334,7 +334,7 @@ document.getElementById('exportButton').addEventListener('click', function() {
     var blob = new Blob([wbout], { type: "application/octet-stream" });
     var link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'data.xlsx';
+    link.download = 'admindata.xlsx';
     link.click();
 });
 </script>
