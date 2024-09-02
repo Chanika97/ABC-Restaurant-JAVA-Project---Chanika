@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Form</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Bootstrap CSS (Optional) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Make a Reservation</h2>
+        <form id="reservationForm" class="mu-reservation-form">
+            <div class="form-group">
+                <label for="full_name">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" class="form-control" placeholder="Full Name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="tel" id="phone_number" name="phone_number" class="form-control" placeholder="Phone Number" required title="Phone number must be exactly 10 digits">
+            </div>
+            <div class="form-group">
+                <label for="count_of_people">Count of People:</label>
+                <input type="number" id="count_of_people" name="count_of_people" class="form-control" min="1" max="10000" placeholder="Count of people" required>
+            </div>
+            <div class="form-group">
+                <label for="reservation_date">Date:</label>
+                <input type="date" id="reservation_date" name="reservation_date" class="form-control" placeholder="Date" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" class="form-control" cols="30" rows="5" placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit" id="submitReservation" class="btn btn-info btn-lg" style="background-color: #ff5733; border-color: #ff5733;">Make Reservation</button>
+        </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Reservation Status</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="modalMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Got it!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery and Bootstrap JS (for modal) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for AJAX and Modal -->
+    <script>
+    $(document).ready(function() {
+        $('#reservationForm').on('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var phoneNumber = $('#phone_number').val();
+            
+            // Validate phone number length and ensure it is numeric
+            if (!/^\d{10}$/.test(phoneNumber)) {
+                alert('Phone number must be exactly 10 digits long and contain only numbers.');
+                return false; // Prevent form submission
+            }
+
+            // Serialize form data
+            var formData = $(this).serialize();
+
+            $.ajax({
+                url: "/reservations/submit", // Make sure this URL matches the controller mapping
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    $('#modalMessage').text(response); // Set success message
+                    $('#myModal').modal('show'); // Show the modal
+
+                    // Clear the form fields
+                    $('#reservationForm')[0].reset();
+                },
+                error: function(xhr) {
+                    var errorMsg = xhr.responseText || 'An error occurred. Please try again.';
+                    $('#modalMessage').text(errorMsg); // Set error message
+                    $('#myModal').modal('show'); // Show the modal
+                }
+            });
+        });
+    });
+
+    </script>
+</body>
+</html>

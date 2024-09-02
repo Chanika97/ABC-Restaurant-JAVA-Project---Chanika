@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>ABC RESTAURANTS</title>
+  <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="shortcut icon" href="../images/favicon-16x16.png" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+  
+</head>
+<body>
+  <div class="container-scroller d-flex">
+    <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #dc7435;">
+      <ul class="nav">
+        <li class="nav-item sidebar-category">
+          <p>Overview</p>
+          <span></span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="mdi mdi-view-quilt menu-icon"></i>
+            <span class="menu-title">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item sidebar-category">
+          <p>Admin & Staff</p>
+          <span></span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="admin.html">
+            <i class="mdi mdi-view-headline menu-icon"></i>
+            <span class="menu-title">Admin</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="staff.html">
+            <i class="mdi mdi-view-headline menu-icon"></i>
+            <span class="menu-title">Staff</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="reports.html">
+            <i class="mdi mdi-view-headline menu-icon"></i>
+            <span class="menu-title">Generate Reports</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="customer.html">
+            <i class="mdi mdi-view-headline menu-icon"></i>
+            <span class="menu-title">Customer Details</span>
+          </a>
+        </li>
+        <li class="nav-item sidebar-category">
+          <p>Restaurant</p>
+          <span></span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="reservations.html">
+            <i class="mdi mdi-view-headline menu-icon"></i>
+            <span class="menu-title">Reservations</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="queries.html">
+            <i class="mdi mdi-view-headline menu-icon"></i>
+            <span class="menu-title">Queries</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="offers.html">
+            <i class="mdi mdi-view-headline menu-icon"></i>
+            <span class="menu-title">Offers</span>
+          </a>
+        </li>
+
+        <li class="nav-item sidebar-category">
+          <p>Actions</p>
+          <span></span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">
+            <i class="mdi mdi-account menu-icon"></i>
+            <span class="menu-title">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container-fluid page-body-wrapper">
+      <nav class="navbar col-lg-12 col-12 px-0 py-0 py-lg-4 d-flex flex-row" style="background-image: url('../images/other/file.jpg')">
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          <div class="navbar-brand-wrapper">
+            <a class="navbar-brand brand-logo" href="index.html"><img src="../images/abc_logo-removebg-preview.png" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../images/abc_logo-removebg-preview.png" alt="logo"/></a>
+          </div>
+          <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">Welcome back to ABC Admin</h4>
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item">
+              <h4 id="current-date-time" class="mb-0 font-weight-bold d-none d-xl-block"></h4>
+            </li>
+          </ul>
+          <script>
+            function updateDateTime() {
+              const now = new Date();
+              
+              // Format date as "Month Day, Year"
+              const optionsDate = { year: 'numeric', month: 'short', day: 'numeric' };
+              const formattedDate = now.toLocaleDateString('en-US', optionsDate);
+              
+              // Format time as "Hour:Minute AM/PM"
+              const optionsTime = { hour: '2-digit', minute: '2-digit', hour12: true };
+              const formattedTime = now.toLocaleTimeString('en-US', optionsTime);
+              
+              // Combine date and time
+              const dateTimeString = `${formattedDate} - ${formattedTime}`;
+              
+              // Set the content of the h4 element
+              document.getElementById('current-date-time').textContent = dateTimeString;
+            }
+          
+            // Update the date and time every second
+            setInterval(updateDateTime, 1000);
+            
+            // Initial call to set the date and time immediately on page load
+            updateDateTime();
+          </script>
+                    
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <!-- Breadcrumb Navigation -->
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="reservations.html">Reservation</a></li>
+                <li class="breadcrumb-item active" aria-current="page">New Reservation</li>
+              </ol>
+            </nav>
+
+            <div class="table-responsive pt-3">
+              <form id="reservationForm" class="mu-reservation-form">
+            <div class="form-group">
+                
+                <input type="text" id="full_name" name="full_name" class="form-control" placeholder="Full Name" required>
+            </div>
+            <div class="form-group">
+                
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                
+                <input type="tel" id="phone_number" name="phone_number" class="form-control" placeholder="Phone Number" required title="Phone number must be exactly 10 digits">
+            </div>
+            <div class="form-group">
+                
+                <input type="number" id="count_of_people" name="count_of_people" class="form-control" min="1" max="10000" placeholder="Count of people" required>
+            </div>
+            <div class="form-group">
+                
+                <input type="date" id="reservation_date" name="reservation_date" class="form-control" placeholder="Date" required>
+            </div>
+            <div class="form-group">
+                
+                <textarea id="message" name="message" class="form-control" cols="30" rows="5" placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit" id="submitReservation" class="btn btn-info btn-lg" style="background-color: #ff5733; border-color: #ff5733;">Make Reservation</button>
+        </form>
+            </div>
+          </div>
+        </div>
+      </div>
+     <div class="col-md-6 grid-margin stretch-card" style="padding: 0;">
+    <div class="card" style="border: none; overflow: hidden;">
+        <div class="card-body" style="padding: 0; position: relative;">
+            <img src="../images/sunset-pool.jpg" alt="sunset" style="width: 100%; height: auto; object-fit: cover;">
+        </div>
+    </div>
+</div>
+      
+    </div>
+  </div>
+   <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Reservation Status</h4>
+                <button type="button" class="btn-close"  aria-label="Close" onclick="window.location.href='newreservation.html';"></button>
+              </div>
+              <div class="modal-body">
+                <p id="modalMessage"></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default"  onclick="window.location.href='newreservation.html';">Got it!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+        <footer class="footer">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-sm-flex justify-content-center justify-content-sm-between py-2">
+                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">2024 ABC Restaurant. All rights reserved.<br>
+                  1234 Main Street, City, Sri Lanka | Phone: (+94) 456-7890<br>
+                  Email: info@abcrestaurant.com |</a>2024</span>
+                
+              </div>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+    </div>
+  </div>
+  <script src="../vendors/js/vendor.bundle.base.js"></script>
+  <script src="../vendors/chart.js/Chart.min.js"></script>
+  <script src="../js/jquery.cookie.js"></script>
+  <script src="../js/off-canvas.js"></script>
+  <script src="../js/hoverable-collapse.js"></script>
+  <script src="../js/template.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"></script>
+
+  <!-- JavaScript for AJAX and Modal -->
+  <script>
+    $(document).ready(function () {
+      $('#reservationForm').on('submit', function (e) {
+        e.preventDefault();
+
+        const formData = $(this).serialize();
+        
+        $.ajax({
+          type: 'POST',
+          url: '/reservations/submit',
+          data: formData,
+          success: function (response) {
+            $('#modalMessage').text('Your reservation has been successfully submitted.');
+            $('#myModal').modal('show');
+            $('#reservationForm')[0].reset();
+          },
+          error: function () {
+            $('#modalMessage').text('An error occurred while submitting your reservation.');
+            $('#myModal').modal('show');
+          }
+        });
+      });
+    });
+  </script>
+  
+  
+</body>
+
+</html>
